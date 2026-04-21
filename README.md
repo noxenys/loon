@@ -13,10 +13,16 @@ WeTalk QX / Loon universal script publish repo.
 
 ### Loon
 
-Import this plugin URL in Loon:
+Preferred for newer TestFlight builds:
 
 ```text
 https://raw.githubusercontent.com/noxenys/loon/main/plugins/WeTalk.lpx
+```
+
+Fallback for older/stable builds:
+
+```text
+https://raw.githubusercontent.com/noxenys/loon/main/plugins/WeTalk.plugin
 ```
 
 Then:
@@ -45,6 +51,12 @@ Example config is in `examples/qx.conf`.
 
 ```text
 https://raw.githubusercontent.com/noxenys/loon/main/plugins/WeTalk.lpx
+```
+
+### Loon legacy plugin
+
+```text
+https://raw.githubusercontent.com/noxenys/loon/main/plugins/WeTalk.plugin
 ```
 
 ### Shared script
