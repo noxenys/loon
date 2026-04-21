@@ -1,0 +1,14 @@
+#!name=WeTalk
+#!desc=WeTalk 自动抓包、签到和视频奖励插件
+#!author=noxenys
+#!homepage=https://github.com/noxenys/loon
+#!system=iOS
+#!loon_version=3.3.3(891)
+#!tag=Checkin,WeTalk
+
+[script]
+http-request ^https:\/\/api\.wetalkapp\.com\/app\/queryBalanceAndBonus script-path=https://raw.githubusercontent.com/noxenys/loon/main/WeTalk_universal.js,requires-body=false,timeout=60,tag=WeTalk抓包,enable=true
+cron "20 8,20 * * *" script-path=https://raw.githubusercontent.com/noxenys/loon/main/WeTalk_universal.js,timeout=180,tag=WeTalk签到,enable=true
+
+[mitm]
+api.wetalkapp.com

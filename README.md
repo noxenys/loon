@@ -5,11 +5,18 @@ WeTalk QX / Loon universal script publish repo.
 ## Files
 
 - `WeTalk_universal.js`: WeTalk dual-platform script for Quantumult X and Loon.
+- `WeTalk.lpx`: Loon plugin package that imports the script and MITM settings.
 
 ## Raw URL
 
 ```text
 https://raw.githubusercontent.com/noxenys/loon/main/WeTalk_universal.js
+```
+
+## Loon Plugin URL
+
+```text
+https://raw.githubusercontent.com/noxenys/loon/main/WeTalk.lpx
 ```
 
 ## Loon
