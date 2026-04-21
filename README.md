@@ -2,43 +2,53 @@
 
 WeTalk QX / Loon universal script publish repo.
 
-## Files
+## Structure
 
-- `WeTalk_universal.js`: WeTalk dual-platform script for Quantumult X and Loon.
-- `WeTalk.lpx`: Loon plugin package that imports the script and MITM settings.
+- `plugins/WeTalk.lpx`: Loon plugin package
+- `scripts/WeTalk_universal.js`: shared script for Loon and Quantumult X
+- `examples/loon.conf`: manual Loon config example
+- `examples/qx.conf`: manual Quantumult X config example
 
-## Raw URL
+## How to use
+
+### Loon
+
+Import this plugin URL in Loon:
 
 ```text
-https://raw.githubusercontent.com/noxenys/loon/main/WeTalk_universal.js
+https://raw.githubusercontent.com/noxenys/loon/main/plugins/WeTalk.lpx
 ```
 
-## Loon Plugin URL
+Then:
+
+1. Enable MITM
+2. Install and trust the Loon certificate if not already done
+3. Open WeTalk once to trigger `queryBalanceAndBonus`
+4. Wait for the notification:
+   - `✅ 新账号已入库`
+   - or `🔄 账号参数已更新`
+5. The scheduled task runs at `08:20` and `20:20`
+
+### Quantumult X
+
+Use this script URL:
 
 ```text
-https://raw.githubusercontent.com/noxenys/loon/main/WeTalk.lpx
+https://raw.githubusercontent.com/noxenys/loon/main/scripts/WeTalk_universal.js
 ```
 
-## Loon
+Example config is in `examples/qx.conf`.
 
-```ini
-[Script]
-http-request ^https:\/\/api\.wetalkapp\.com\/app\/queryBalanceAndBonus script-path=https://raw.githubusercontent.com/noxenys/loon/main/WeTalk_universal.js,requires-body=false,timeout=60,tag=WeTalk抓包,enable=true
-cron "20 8,20 * * *" script-path=https://raw.githubusercontent.com/noxenys/loon/main/WeTalk_universal.js,timeout=180,tag=WeTalk签到,enable=true
+## Direct URLs
 
-[MITM]
-hostname = api.wetalkapp.com
+### Loon plugin
+
+```text
+https://raw.githubusercontent.com/noxenys/loon/main/plugins/WeTalk.lpx
 ```
 
-## Quantumult X
+### Shared script
 
-```ini
-[rewrite_local]
-^https:\/\/api\.wetalkapp\.com\/app\/queryBalanceAndBonus url script-request-header https://raw.githubusercontent.com/noxenys/loon/main/WeTalk_universal.js
-
-[task_local]
-20 8,20 * * * https://raw.githubusercontent.com/noxenys/loon/main/WeTalk_universal.js, tag=WeTalk签到, enabled=true
-
-[MITM]
-hostname = api.wetalkapp.com
+```text
+https://raw.githubusercontent.com/noxenys/loon/main/scripts/WeTalk_universal.js
 ```
