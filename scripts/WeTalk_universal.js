@@ -137,6 +137,19 @@ function notify(title, body) {
   if (isLoon) return $notification.post(scriptName, title, body);
 }
 
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function buildHtmlMessage(text) {
+  return `<pre>${escapeHtml(text)}</pre>`;
+}
+
 function httpGet(opts) {
   if (isQX) {
     return $task.fetch({
@@ -404,9 +417,15 @@ if (typeof $request !== "undefined" && $request) {
 } else {
   const store = loadStore();
   const ids = store.order.filter(id => store.accounts[id]);
+  const isManualGeneric = typeof $environment !== "undefined" && !!$environment;
   if (!ids.length) {
-    notify("⚠️ 未抓到任何账号", "请先打开 WeTalk 触发抓包");
-    $done();
+    const message = "请先打开 WeTalk 触发抓包";
+    notify("⚠️ 未抓到任何账号", message);
+    if (isManualGeneric && isLoon) {
+      $done({ title: "⚠️ 未抓到任何账号", htmlMessage: buildHtmlMessage(message) });
+    } else {
+      $done();
+    }
   } else {
     const total = ids.length;
     const results = [];
@@ -418,11 +437,21 @@ if (typeof $request !== "undefined" && $request) {
         .then(() => idx < ids.length - 1 ? sleep(ACCOUNT_GAP) : null);
     });
     chain.then(() => {
-      notify(`🎉 全部完成 (${total}个账号)`, results.join("\n———\n"));
-      $done();
+      const summary = results.join("\n———\n");
+      notify(`🎉 全部完成 (${total}个账号)`, summary);
+      if (isManualGeneric && isLoon) {
+        $done({ title: `🎉 全部完成 (${total}个账号)`, htmlMessage: buildHtmlMessage(summary) });
+      } else {
+        $done();
+      }
     }).catch(err => {
-      notify("❌ 任务异常", `${results.join("\n———\n")}\n${err.error || String(err)}`);
-      $done();
+      const summary = `${results.join("\n———\n")}\n${err.error || String(err)}`.trim();
+      notify("❌ 任务异常", summary);
+      if (isManualGeneric && isLoon) {
+        $done({ title: "❌ 任务异常", htmlMessage: buildHtmlMessage(summary) });
+      } else {
+        $done();
+      }
     });
   }
 }

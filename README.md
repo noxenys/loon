@@ -34,6 +34,7 @@ Then:
    - `✅ 新账号已入库`
    - or `🔄 账号参数已更新`
 5. The scheduled task runs at `08:20` and `20:20`
+6. Manual execution uses `WeTalk手动签到` and shows a result panel directly in Loon
 
 ### Quantumult X
 
