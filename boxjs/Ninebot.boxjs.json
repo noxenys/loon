@@ -1,0 +1,34 @@
+{
+  "id": "noxenys.loon.ninebot",
+  "name": "noxenys Loon",
+  "author": "noxenys",
+  "repo": "https://github.com/noxenys/loon",
+  "apps": [
+    {
+      "id": "ninebot",
+      "name": "九号出行",
+      "keys": [
+        "Ninebot.Accounts"
+      ],
+      "settings": [
+        {
+          "id": "Ninebot.Accounts",
+          "name": "账号数据",
+          "val": "",
+          "type": "textarea",
+          "placeholder": "deviceId:Authorization\n多个账号用英文分号分隔：\ndeviceId1:Authorization1;deviceId2:Authorization2",
+          "autoGrow": true,
+          "rows": 8,
+          "desc": "抓包成功后会自动写入。也可以手动填写，格式为 deviceId:Authorization，多个账号用英文分号分隔。"
+        }
+      ],
+      "author": "52Lxcloud",
+      "repo": "https://github.com/noxenys/loon",
+      "script": "https://raw.githubusercontent.com/noxenys/loon/main/scripts/Ninebot_universal.js",
+      "icons": [
+        "https://raw.githubusercontent.com/Orz-3/mini/master/Color/ninebot.png",
+        "https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/ninebot.png"
+      ]
+    }
+  ]
+}

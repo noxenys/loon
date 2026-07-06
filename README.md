@@ -6,6 +6,7 @@ WeTalk QX / Loon universal script publish repo.
 
 - `plugins/WeTalk.lpx`: WeTalk Loon plugin package
 - `plugins/Ninebot.lpx`: Ninebot Loon plugin package
+- `boxjs/Ninebot.boxjs.json`: Ninebot BoxJS subscription
 - `scripts/WeTalk_universal.js`: WeTalk shared script for Loon and Quantumult X
 - `scripts/Ninebot_universal.js`: Ninebot shared script for Loon-compatible runtimes
 - `examples/loon.conf`: manual Loon config example
@@ -75,6 +76,22 @@ https://raw.githubusercontent.com/noxenys/loon/main/scripts/WeTalk_universal.js
 
 Example config is in `examples/qx.conf`.
 
+### BoxJS
+
+Ninebot subscription:
+
+```text
+https://raw.githubusercontent.com/noxenys/loon/main/boxjs/Ninebot.boxjs.json
+```
+
+The editable storage key is `Ninebot.Accounts`. The value format is:
+
+```text
+deviceId:Authorization
+```
+
+Multiple accounts are separated by semicolons.
+
 ## Direct URLs
 
 ### Loon plugin
@@ -117,4 +134,12 @@ Ninebot:
 
 ```text
 https://raw.githubusercontent.com/noxenys/loon/main/scripts/Ninebot_universal.js
+```
+
+### BoxJS subscription
+
+Ninebot:
+
+```text
+https://raw.githubusercontent.com/noxenys/loon/main/boxjs/Ninebot.boxjs.json
 ```
