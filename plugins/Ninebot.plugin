@@ -1,0 +1,14 @@
+#!name=Ninebot
+#!desc=九号出行自动签到，打开签到页自动抓取 Token，定时领取 N 币
+#!author=52Lxcloud
+#!homepage=https://github.com/noxenys/loon
+#!system=iOS,iPadOS
+#!tag=Checkin,Ninebot
+
+[Script]
+http-request ^https:\/\/cn-cbu-gateway\.ninebot\.com\/portal\/api\/user-sign\/v2\/(?:status|sign)(?:\?.*)?$ script-path=https://raw.githubusercontent.com/noxenys/loon/main/scripts/Ninebot_universal.js, requires-body=false, timeout=60, tag=九号出行抓包, enable=true
+cron "15 9 * * *" script-path=https://raw.githubusercontent.com/noxenys/loon/main/scripts/Ninebot_universal.js, timeout=120, tag=九号出行签到, enable=true
+generic script-path=https://raw.githubusercontent.com/noxenys/loon/main/scripts/Ninebot_universal.js, timeout=120, tag=九号出行手动签到, enable=true
+
+[MITM]
+cn-cbu-gateway.ninebot.com
