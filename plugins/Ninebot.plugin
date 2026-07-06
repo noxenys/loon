@@ -6,9 +6,9 @@
 #!tag=Checkin,Ninebot
 
 [Script]
-http-request ^https:\/\/cn-cbu-gateway\.ninebot\.com\/portal\/api\/user-sign\/v2\/.* script-path=https://raw.githubusercontent.com/noxenys/loon/main/scripts/Ninebot_universal.js, requires-body=false, timeout=60, tag=九号出行抓包, enable=true
+http-request ^https:\/\/.*ninebot\.com\/.* script-path=https://raw.githubusercontent.com/noxenys/loon/main/scripts/Ninebot_universal.js, requires-body=true, timeout=60, tag=九号出行抓包, enable=true
 cron "15 9 * * *" script-path=https://raw.githubusercontent.com/noxenys/loon/main/scripts/Ninebot_universal.js, timeout=120, tag=九号出行签到, enable=true
 generic script-path=https://raw.githubusercontent.com/noxenys/loon/main/scripts/Ninebot_universal.js, timeout=120, tag=九号出行手动签到, enable=true
 
 [MITM]
-hostname = %APPEND% cn-cbu-gateway.ninebot.com
+hostname = %APPEND% cn-cbu-gateway.ninebot.com, h5-bj.ninebot.com, *.ninebot.com
