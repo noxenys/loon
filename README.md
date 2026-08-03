@@ -6,9 +6,11 @@ WeTalk QX / Loon universal script publish repo.
 
 - `plugins/WeTalk.lpx`: WeTalk Loon plugin package
 - `plugins/Ninebot.lpx`: Ninebot Loon plugin package
+- `plugins/cnc07.lpx`: cnc07 VPN node extraction plugin package
 - `boxjs/Ninebot.boxjs.json`: Ninebot BoxJS subscription
 - `scripts/WeTalk_universal.js`: WeTalk shared script for Loon and Quantumult X
 - `scripts/Ninebot_universal.js`: Ninebot shared script for Loon-compatible runtimes
+- `scripts/cnc07_universal.js`: cnc07 node extraction script for Loon and Quantumult X
 - `examples/loon.conf`: manual Loon config example
 - `examples/qx.conf`: manual Quantumult X config example
 
@@ -76,6 +78,34 @@ https://raw.githubusercontent.com/noxenys/loon/main/scripts/WeTalk_universal.js
 
 Example config is in `examples/qx.conf`.
 
+#### cnc07
+
+Preferred for newer TestFlight builds:
+
+```text
+https://raw.githubusercontent.com/noxenys/loon/main/plugins/cnc07.lpx
+```
+
+Fallback for older/stable builds:
+
+```text
+https://raw.githubusercontent.com/noxenys/loon/main/plugins/cnc07.plugin
+```
+
+Then:
+
+1. Enable MITM
+2. Install and trust the Loon certificate if not already done
+3. The scheduled task runs at `06:00` and `18:00`, pulling and decrypting cnc07 nodes
+4. Manual execution uses `cnc07手动刷新`
+5. Nodes appear in the `cnc07` policy group (or proxy subscription)
+
+Or add the node subscription directly (Loon parses the Surge-format response):
+
+```text
+http://cnc07api.cnc07.com/api/cnc07iuapis
+```
+
 ### BoxJS
 
 Ninebot subscription:
@@ -108,6 +138,12 @@ Ninebot:
 https://raw.githubusercontent.com/noxenys/loon/main/plugins/Ninebot.lpx
 ```
 
+cnc07:
+
+```text
+https://raw.githubusercontent.com/noxenys/loon/main/plugins/cnc07.lpx
+```
+
 ### Loon legacy plugin
 
 WeTalk:
@@ -122,6 +158,12 @@ Ninebot:
 https://raw.githubusercontent.com/noxenys/loon/main/plugins/Ninebot.plugin
 ```
 
+cnc07:
+
+```text
+https://raw.githubusercontent.com/noxenys/loon/main/plugins/cnc07.plugin
+```
+
 ### Shared script
 
 WeTalk:
@@ -134,6 +176,12 @@ Ninebot:
 
 ```text
 https://raw.githubusercontent.com/noxenys/loon/main/scripts/Ninebot_universal.js
+```
+
+cnc07:
+
+```text
+https://raw.githubusercontent.com/noxenys/loon/main/scripts/cnc07_universal.js
 ```
 
 ### BoxJS subscription
